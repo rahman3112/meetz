@@ -24,7 +24,7 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/send-email', formData);
+      const response = await axios.post('https://meetz-back.onrender.com/api/send-email', formData);
       setSubmitStatus({ success: true, message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {

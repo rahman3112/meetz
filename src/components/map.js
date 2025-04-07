@@ -24,7 +24,7 @@ const Map = ({ loggedInEmail }) => {
         setMap(mapInstance);
 
         // Fetch existing pins
-        const response = await fetch('http://localhost:5000/api/pins');
+        const response = await fetch('https://meetz-back.onrender.com/api/pins');
         if (!response.ok) throw new Error('Failed to fetch pins');
         const data = await response.json();
         setPins(data);
@@ -42,7 +42,7 @@ const Map = ({ loggedInEmail }) => {
           };
 
           try {
-            const pinResponse = await fetch('http://localhost:5000/api/pins', {
+            const pinResponse = await fetch('https://meetz-back.onrender.com/api/pins', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(newPin),
@@ -82,7 +82,7 @@ const Map = ({ loggedInEmail }) => {
   const handleVote = async (pinId, vote) => {
     console.log('Voting attempt:', { pinId, vote, email: loggedInEmail });
     try {
-      const response = await fetch(`http://localhost:5000/api/pins/${pinId}/vote`, {
+      const response = await fetch(`https://meetz-back.onrender.com/api/pins/${pinId}/vote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: loggedInEmail, vote }),
